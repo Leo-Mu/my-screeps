@@ -36,8 +36,11 @@ let Export = {
                         }
                         if (putName == "spawn" && random >= 1) {
                             //if (_.size(Game.creeps) > 10) continue;
-                            let target = creep.pos.findClosestByPath(FIND_MY_SPAWNS, {
-                                filter: object => object.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+                            let target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+                                filter: (structure) => {
+                                    return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
+                                        structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                                }
                             });
                             if (target == null) continue;
                             creep.memory.task = {};
