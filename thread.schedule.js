@@ -16,7 +16,7 @@ let Export = {
                         let random = _.random(2);
                         if (putName == "repaire" && random == 1) {
                             if (_.size(Game.creeps) < 10) continue;
-                            let target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+                            let target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                                 filter: object => object.hits < object.hitsMax
                             });
                             if (target == null) continue;
