@@ -13,8 +13,8 @@ let Export = {
             if (!creep.memory.task) {
                 if (creep.store.getUsedCapacity() != 0) {
                     for (const putName of global.PUT_SEQUENCE) {
-                        let random = _.random(2);
-                        if (putName == "repaire" && random == 1) {
+                        let random = _.random(3);
+                        if (putName == "repaire" && random == 3) {
                             if (_.size(Game.creeps) < 10) continue;
                             let target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                                 filter: object => object.hits < object.hitsMax
@@ -34,8 +34,8 @@ let Export = {
                             creep.memory.task.target = new newTaskTarget(target);
                             break;
                         }
-                        if (putName == "spawn") {
-                            if (_.size(Game.creeps) > 10) continue;
+                        if (putName == "spawn" && random >= 1) {
+                            //if (_.size(Game.creeps) > 10) continue;
                             let target = creep.pos.findClosestByPath(FIND_MY_SPAWNS, {
                                 filter: object => object.store.getFreeCapacity(RESOURCE_ENERGY) > 0
                             });

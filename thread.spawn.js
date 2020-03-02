@@ -1,4 +1,5 @@
 //let stringToFind = require("./lib.stringToFind");
+const MAX_SCREEPS = 15;
 
 function spawnCreep(role, spawn) {
     let room = spawn.room;
@@ -34,6 +35,7 @@ function spawnCreep(role, spawn) {
 
 let Export = {
     run: function () {
+        if (_.size(Game.creeps) > MAX_SCREEPS) return;
         for (const spawnName in Game.spawns) {
             let spawn = Game.spawns[spawnName];
             let room = spawn.room;
