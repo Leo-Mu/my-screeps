@@ -14,10 +14,10 @@ function spawnCreep(role, spawn) {
         let m = Math.floor(maxBody / 3);
         let M = Math.floor(m / 50);
         maxBody -= M * 50;
-        let w = Math.floor(maxBody / 2);
-        let W = Math.floor(w / 100);
-        maxBody -= W * 100;
-        let C = Math.floor(maxBody / 50);
+        let c = Math.floor(maxBody / 2);
+        let C = Math.floor(c / 50);
+        maxBody -= C * 50;
+        let W = Math.floor(maxBody / 100);
         let body = [];
         for (let i = 0; i < M; i++) {
             body.push(MOVE);
