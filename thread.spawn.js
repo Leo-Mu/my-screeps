@@ -1,5 +1,5 @@
 //let stringToFind = require("./lib.stringToFind");
-const MAX_SCREEPS = 15;
+const MAX_SCREEPS = 25;
 
 function spawnCreep(role, spawn) {
     let room = spawn.room;
