@@ -23,14 +23,14 @@ let Export = {
 
         if (creep.room.name == creep.memory.task.target.pos.room) {
             let target = Game.getObjectById(creep.memory.task.target.id);
-            if(target == null){
+            if (target == null) {
                 delete creep.memory.task;
                 return;
             }
 
             /* task main */
             if (Math.abs(creep.pos.x - target.pos.x) <= 3 && Math.abs(creep.pos.y - target.pos.y) <= 3) {
-                if (creep.repair(target) != OK) {
+                if (target.hits == target.hitsMax || creep.repair(target) != OK) {
                     delete creep.memory.task;
                 }
             } else {
@@ -39,7 +39,7 @@ let Export = {
             /* task main */
 
         } else {
-            let target = new RoomPosition(creep.memory.task.target.pos.x,creep.memory.task.target.pos.y,creep.memory.task.target.pos.room);
+            let target = new RoomPosition(creep.memory.task.target.pos.x, creep.memory.task.target.pos.y, creep.memory.task.target.pos.room);
             creep.moveTo(target);
         }
     }
