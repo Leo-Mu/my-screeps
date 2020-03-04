@@ -28,7 +28,7 @@ function spawnCreep(role, spawn) {
         for (let i = 0; i < C; i++) {
             body.push(CARRY);
         }
-        spawn.spawnCreep(body,newName);
+        spawn.spawnCreep(body, newName);
         return;
     }
 }
