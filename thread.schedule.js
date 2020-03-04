@@ -60,9 +60,7 @@ let Export = {
                 } else {
                     for (const getName of global.GET_SEQUENCE) {
                         if (getName == "tombstone") {
-                            let target = creep.pos.findClosestByPath(FIND_TOMBSTONES, {
-                                filter: object => object.store.getUsedCapacity() > 0
-                            });
+                            let target = creep.pos.findClosestByPath(FIND_TOMBSTONES);
                             if (target == null) continue;
                             creep.memory.task = {};
                             creep.memory.task.type = "get";
