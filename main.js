@@ -1,7 +1,7 @@
 //config
 const constThreads = ["spawn", "schedule"];
 Memory.missionThreads = [];
-global.GET_SEQUENCE = ["source"/*, "spawn"*/];
+global.GET_SEQUENCE = ["tombstone", "source"/*, "spawn"*/];
 global.PUT_SEQUENCE = ["repaire", "build", "spawn", "controller"];
 
 //require threads
@@ -32,7 +32,7 @@ module.exports.loop = function () {
 	//creep tasks
 	for (let name in Game.creeps) {
 		let creep = Game.creeps[name];
-		if(!creep.memory.task)continue;
+		if (!creep.memory.task) continue;
 		Tasks[creep.memory.task.type].run(creep);
 	}
 }

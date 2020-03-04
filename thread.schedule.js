@@ -59,6 +59,14 @@ let Export = {
                     }
                 } else {
                     for (const getName of global.GET_SEQUENCE) {
+                        if (getName == "tombstone") {
+                            let target = creep.pos.findClosestByPath(FIND_TOMBSTONES);
+                            if (target == null) continue;
+                            creep.memory.task = {};
+                            creep.memory.task.type = "get";
+                            creep.memory.task.target = new newTaskTarget(target);
+                            break;
+                        }
                         if (getName == "source") {
                             let target = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
                             if (target == null) continue;

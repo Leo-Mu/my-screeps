@@ -30,7 +30,7 @@ let Export = {
 
             /* task main */
             if (Math.abs(creep.pos.x - target.pos.x) <= 1 && Math.abs(creep.pos.y - target.pos.y) <= 1) {
-                if (target.structureType) {
+                if (target.structureType || "deathTime" in target) {
                     if (creep.withdraw(target, RESOURCE_ENERGY) != OK) {
                         delete creep.memory.task;
                     }
@@ -40,7 +40,7 @@ let Export = {
                     }
                 }
             } else {
-                if(creep.moveTo(target)==ERR_NO_PATH){
+                if (creep.moveTo(target) == ERR_NO_PATH) {
                     delete creep.memory.task;
                 }
             }
