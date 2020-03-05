@@ -1,5 +1,5 @@
 //let stringToFind = require("./lib.stringToFind");
-const MAX_SCREEPS = 25;
+const MAX_SCREEPS = 20;
 
 function spawnCreep(role, spawn) {
     let room = spawn.room;
@@ -8,7 +8,10 @@ function spawnCreep(role, spawn) {
     let extensions = room.find(FIND_MY_STRUCTURES, {
         filter: { structureType: STRUCTURE_EXTENSION }
     });
-    if (extensions.length > 0) maxBody += extensions.length * extensions[0].store.getCapacity(RESOURCE_ENERGY);
+    if (extensions.length > 0) {
+        useExtensions = extensions.length * _.size(Game.creeps) / MAX_SCREEPS;
+        maxBody += useExtensions * extensions[0].store.getCapacity(RESOURCE_ENERGY);
+    }
     if (role == "MCW") {
         let newName = "MCW" + random;
         let m = Math.floor(maxBody / 3);
