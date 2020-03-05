@@ -12,8 +12,8 @@ let Export = {
             let creep = Game.creeps[name];
             if (!creep.memory.task) {
                 if (creep.store.getUsedCapacity() != 0) {
+                    let random = _.random(3);
                     for (const putName of global.PUT_SEQUENCE) {
-                        let random = _.random(3);
                         if (putName == "repaire" && random == 3) {
                             if (_.size(Game.creeps) < 10) continue;
                             let target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
