@@ -3,7 +3,7 @@ const constThreads = ["spawn", "schedule", "tower"];
 Memory.missionThreads = [];
 global.GET_SEQUENCE = ["tombstone", "source"/*, "spawn"*/];
 global.PUT_SEQUENCE = [/*"repaire"*/"tower", "build", "spawn", "controller"];
-global.TOWER_SEQUENCE = ["attack", "heal", "repair"];
+global.TOWER_SEQUENCE = ["attack", "heal", "repair", "wall"];
 
 //require threads
 let Thread = {};

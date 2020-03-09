@@ -19,7 +19,15 @@ let Export = {
                         tower.heal(target);
                         break;
                     }
-                    if (towerName == "repair") {
+                    if (towerName == "repair") { //not include wall
+                        let target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+                            filter: object => object.structureType != STRUCTURE_WALL && object.hits < object.hitsMax
+                        });
+                        if (target == null) continue;
+                        tower.repair(target);
+                        break;
+                    }
+                    if (towerName == "wall") {
                         let target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
                             filter: object => object.hits < object.hitsMax
                         });
