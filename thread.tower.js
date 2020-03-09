@@ -11,14 +11,14 @@ let Export = {
                         tower.attack(target);
                     }
                     if (towerName == "heal") {
-                        let target = tower.pos.findClosestByPath(FIND_MY_CREEPS, {
+                        let target = tower.pos.findClosestByRange(FIND_MY_CREEPS, {
                             filter: object => object.hits < object.hitsMax
                         });
                         if (target == null) continue;
                         tower.heal(target);
                     }
                     if (towerName == "repair") {
-                        let target = tower.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+                        let target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
                             filter: object => object.hits < object.hitsMax
                         });
                         if (target == null) continue;
