@@ -1,3 +1,5 @@
+const BOOT_SCREEPS = 5;
+
 function newTaskTarget(target) {
     this.id = target.id;
     this.pos = {};
@@ -16,7 +18,7 @@ let Export = {
                     for (const putName of global.PUT_SEQUENCE) {
                         /*
                         if (putName == "repaire" && random == 3) {
-                            if (_.size(Game.creeps) < 10) continue;
+                            if (_.size(Game.creeps) < BOOT_SCREEPS) continue;
                             let target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                                 filter: object => object.hits < object.hitsMax
                             });
@@ -28,9 +30,12 @@ let Export = {
                         }
                         */
                         if (putName == "tower" && random == 3) {
-                            if (_.size(Game.creeps) < 10) continue;
+                            if (_.size(Game.creeps) < BOOT_SCREEPS) continue;
                             let target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
-                                filter: object => object.structureType == STRUCTURE_TOWER
+                                filter: (structure) => {
+                                    return structure.structureType == STRUCTURE_TOWER &&
+                                        structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+                                }
                             });
                             if (target == null) continue;
                             creep.memory.task = {};
@@ -39,7 +44,7 @@ let Export = {
                             break;
                         }
                         if (putName == "build" && random == 2) {
-                            if (_.size(Game.creeps) < 10) continue;
+                            if (_.size(Game.creeps) < BOOT_SCREEPS) continue;
                             let target = creep.pos.findClosestByPath(FIND_MY_CONSTRUCTION_SITES);
                             if (target == null) continue;
                             creep.memory.task = {};
@@ -48,7 +53,7 @@ let Export = {
                             break;
                         }
                         if (putName == "spawn" && random >= 1) {
-                            //if (_.size(Game.creeps) > 10) continue;
+                            //if (_.size(Game.creeps) > BOOT_SCREEPS) continue;
                             let target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                                 filter: (structure) => {
                                     return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
