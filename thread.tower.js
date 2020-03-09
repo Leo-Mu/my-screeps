@@ -9,6 +9,7 @@ let Export = {
                         let target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
                         if (target == null) continue;
                         tower.attack(target);
+                        break;
                     }
                     if (towerName == "heal") {
                         let target = tower.pos.findClosestByRange(FIND_MY_CREEPS, {
@@ -16,6 +17,7 @@ let Export = {
                         });
                         if (target == null) continue;
                         tower.heal(target);
+                        break;
                     }
                     if (towerName == "repair") {
                         let target = tower.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -23,6 +25,7 @@ let Export = {
                         });
                         if (target == null) continue;
                         tower.repair(target);
+                        break;
                     }
                 }
             }
