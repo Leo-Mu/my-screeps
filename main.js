@@ -1,13 +1,15 @@
 //config
-const constThreads = ["spawn", "schedule"];
+const constThreads = ["spawn", "schedule", "tower"];
 Memory.missionThreads = [];
 global.GET_SEQUENCE = ["tombstone", "source"/*, "spawn"*/];
-global.PUT_SEQUENCE = ["repaire", "build", "spawn", "controller"];
+global.PUT_SEQUENCE = [/*"repaire"*/"tower", "build", "spawn", "controller"];
+global.TOWER_SEQUENCE = ["attack", "heal", "repair"];
 
 //require threads
 let Thread = {};
 Thread.spawn = require("./thread.spawn");
 Thread.schedule = require("./thread.schedule");
+Thread.tower = require("./thread.tower");
 //require tasks
 let Tasks = {};
 Tasks.get = require("./task.get");

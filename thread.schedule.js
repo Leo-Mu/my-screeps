@@ -14,6 +14,7 @@ let Export = {
                 if (creep.store.getUsedCapacity() != 0) {
                     let random = _.random(3);
                     for (const putName of global.PUT_SEQUENCE) {
+                        /*
                         if (putName == "repaire" && random == 3) {
                             if (_.size(Game.creeps) < 10) continue;
                             let target = creep.pos.findClosestByPath(FIND_STRUCTURES, {
@@ -22,6 +23,18 @@ let Export = {
                             if (target == null) continue;
                             creep.memory.task = {};
                             creep.memory.task.type = "repaire";
+                            creep.memory.task.target = new newTaskTarget(target);
+                            break;
+                        }
+                        */
+                        if (putName == "tower" && random == 3) {
+                            if (_.size(Game.creeps) < 10) continue;
+                            let target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+                                filter: object => object.structureType == STRUCTURE_TOWER
+                            });
+                            if (target == null) continue;
+                            creep.memory.task = {};
+                            creep.memory.task.type = "put";
                             creep.memory.task.target = new newTaskTarget(target);
                             break;
                         }
