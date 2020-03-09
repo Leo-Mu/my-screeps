@@ -29,7 +29,16 @@ let Export = {
                             break;
                         }
                         */
-                        if (putName == "tower" && random == 3) {
+                        if (putName == "build" && random == 3) {
+                            if (_.size(Game.creeps) < BOOT_SCREEPS) continue;
+                            let target = creep.pos.findClosestByPath(FIND_MY_CONSTRUCTION_SITES);
+                            if (target == null) continue;
+                            creep.memory.task = {};
+                            creep.memory.task.type = "build";
+                            creep.memory.task.target = new newTaskTarget(target);
+                            break;
+                        }
+                        if (putName == "tower" && random >= 2) {
                             if (_.size(Game.creeps) < BOOT_SCREEPS) continue;
                             let target = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
                                 filter: (structure) => {
@@ -40,15 +49,6 @@ let Export = {
                             if (target == null) continue;
                             creep.memory.task = {};
                             creep.memory.task.type = "put";
-                            creep.memory.task.target = new newTaskTarget(target);
-                            break;
-                        }
-                        if (putName == "build" && random == 2) {
-                            if (_.size(Game.creeps) < BOOT_SCREEPS) continue;
-                            let target = creep.pos.findClosestByPath(FIND_MY_CONSTRUCTION_SITES);
-                            if (target == null) continue;
-                            creep.memory.task = {};
-                            creep.memory.task.type = "build";
                             creep.memory.task.target = new newTaskTarget(target);
                             break;
                         }
